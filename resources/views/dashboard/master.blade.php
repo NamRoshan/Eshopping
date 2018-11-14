@@ -46,17 +46,52 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
+                    <a href="{{route('view')}}">
+                        <i class="pe-7s-culture"></i>
                         <p>Home</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user.html">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+
+              <li >
+                    <a data-toggle="collapse" href="#collapseExample" class="username">
+                       <i class="pe-7s-user"></i>
+                             <p>
+                        User Profile
+                      <b class="caret"></b>
+                    </p>
                     </a>
-                </li>
+                </li> 
+         
+                <li>
+            </li>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                              <p class="sidebar-mini"> MP </p>
+                              <i class="pe-7s-user"></i>
+                              <p class="sidebar-normal"> My Profile </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                              <p class="sidebar-mini"> EP </p>
+                              <i class="pe-7s-exapnd2"></i>
+                              <p class="sidebar-normal"> Edit Profile </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                              <p class="sidebar-mini"> S </p>
+                              <i class="pe-7s-tools"></i>
+                              <p class="sidebar-normal"> Settings </p>
+                            </a>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+          
+    
                 <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
@@ -87,12 +122,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
+
             </ul>
     	</div>
 
@@ -103,7 +133,7 @@
      @else
     <div class="main-panel">
      @endguest
-     
+
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -149,40 +179,45 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
- @guest
+                   
+              
+                        @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            @else
                             <li class="nav-item">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             </li>
-                        @else
-                            <li class="nav-item dropdown">
+                             <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        
+                                    </p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li>
+                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    </li>
+                                <li><a href="#">My Profile</a></li>
+                                <li><a href="#">Edit Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Setting</a></li>
+                              </ul>
+                        </li>
+                        
+<!--                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -198,7 +233,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li> -->
                         @endguest
 						<li class="separator hidden-lg"></li>
                     </ul>
