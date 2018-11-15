@@ -143,18 +143,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @if(isset($user)AND $user =='admin')
-                      <a class="navbar-brand" href="#">Admin Dashboard</a>
-                        @else
-                    <a class="navbar-brand" href="#">User Dashboard</a>
-                        @endif
+                    <a class="navbar-brand" href="#">Admin Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
+								<p class="hidden-lg hidden-md">Admin Dashboard</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -204,7 +200,6 @@
 
                               </a>
                               <ul class="dropdown-menu">
-                                            @if(isset($user)AND $user =='admin')
                                 <li>
                                     <a  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -215,20 +210,6 @@
                                         @csrf
                                     </form>
                                     </li>
-                                    <!-- for user dashbord -->
-                                    @else
-                                     <li>
-                                    <a  href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}</a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    </li>
-                                    @endif
-
                                 <li><a href="#">My Profile</a></li>
                                 <li><a href="#">Edit Profile</a></li>
                                 <li class="divider"></li>

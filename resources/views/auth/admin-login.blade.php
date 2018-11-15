@@ -71,12 +71,13 @@
         </div>
     </div>
 </div> -->
+
 <section class="login-block">
     <div class="container">
     <div class="row">
         <div class="col-md-4 login-sec">
-            <h2 class="text-center">Dhangadhi<br> E-Shooping <br>Login Now</h2>
-  <form method="POST" action="{{ route('login') }}" class="login-form">
+            <h2 class="text-center">"Admin"<br>Dhangadhi<br> E-Shooping <br>Login Now</h2>
+  <form method="POST" action="{{ route('login-admin') }}" class="login-form">
                         @csrf
   <div class="form-group">
     <label for="email" class="text-uppercase">{{ __(' E-Mail Address') }}</label>
